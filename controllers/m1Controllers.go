@@ -16,13 +16,13 @@ func GetM1(ctx *gin.Context) {
 	url, copyright := getbg()
 	name, auther, picurl, mp3url := getMusic("https://api.qqsuu.cn/api/rand.music?sort=新歌榜&type=json")
 
-	ctx.HTML(http.StatusOK, "index.tmpl", gin.H{
-		"url": url,
+	ctx.HTML(http.StatusOK, "index.html", gin.H{
+		"url":       url,
 		"copyright": copyright,
-		"name": name,
-		"auther": auther,
-		"picurl": picurl,
-		"mp3url": mp3url,
+		"name":      name,
+		"auther":    auther,
+		"picurl":    picurl,
+		"mp3url":    mp3url,
 	})
 }
 
@@ -30,27 +30,26 @@ func GetM2(ctx *gin.Context) {
 	url, copyright := getbg()
 	name, auther, picurl, mp3url := getMusic("https://api.qqsuu.cn/api/rand.music?sort=飙升榜&type=json")
 
-	ctx.HTML(http.StatusOK, "index.tmpl", gin.H{
-		"url": url,
+	ctx.HTML(http.StatusOK, "index.html", gin.H{
+		"url":       url,
 		"copyright": copyright,
-		"name": name,
-		"auther": auther,
-		"picurl": picurl,
-		"mp3url": mp3url,
+		"name":      name,
+		"auther":    auther,
+		"picurl":    picurl,
+		"mp3url":    mp3url,
 	})
 }
-
 
 func GetM3(ctx *gin.Context) {
 	url, copyright := getbg()
 	name, auther, picurl, mp3url := getMusic("https://api.qqsuu.cn/api/rand.music?sort=原创榜&type=json")
 
-	ctx.HTML(http.StatusOK, "index.tmpl", gin.H{
-		"url": url,
+	ctx.HTML(http.StatusOK, "index.html", gin.H{
+		"url":       url,
 		"copyright": copyright,
-		"name": name,
-		"auther": auther,
-		"picurl": picurl,
-		"mp3url": mp3url,
+		"name":      name,
+		"auther":    auther,
+		"picurl":    picurl,
+		"mp3url":    mp3url,
 	})
 }
