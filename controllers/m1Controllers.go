@@ -53,3 +53,7 @@ func GetM3(ctx *gin.Context) {
 		"mp3url":    mp3url,
 	})
 }
+
+func NoRoute(ctx *gin.Context) {
+	ctx.String(http.StatusOK, "The current page does not exist, please return to the previous page")
+}

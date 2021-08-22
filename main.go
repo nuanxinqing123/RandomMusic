@@ -8,11 +8,10 @@
 package main
 
 import (
-"Gin_163Music/controllers"
-"github.com/gin-gonic/gin"
-"log"
+	"Gin_163Music/controllers"
+	"github.com/gin-gonic/gin"
+	"log"
 )
-
 
 func main() {
 	gin.SetMode(gin.ReleaseMode)
@@ -24,10 +23,13 @@ func main() {
 	route.GET("/m1", controllers.GetM1)
 	route.GET("/m2", controllers.GetM2)
 	route.GET("/m3", controllers.GetM3)
+	route.NoRoute(controllers.NoRoute)
 
 	log.Println("Project start success, The program runs on port 5555")
 
-	route.Run("0.0.0.0:5555")
+	err := route.Run("0.0.0.0:5555")
+	if err != nil {
+		log.Println("Error：", err)
+		return
+	}
 }
-
-
