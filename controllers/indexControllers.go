@@ -21,14 +21,13 @@ func GetIndex(ctx *gin.Context) {
 	url, copyright := getbg()
 	name, auther, picurl, mp3url := getMusic("https://api.qqsuu.cn/api/rand.music?sort=热歌榜&type=json")
 
-
-	ctx.HTML(http.StatusOK,"index.html", gin.H{
-		"url": url,
+	ctx.HTML(http.StatusOK, "index.html", gin.H{
+		"url":       url,
 		"copyright": copyright,
-		"name": name,
-		"auther": auther,
-		"picurl": picurl,
-		"mp3url": mp3url,
+		"name":      name,
+		"auther":    auther,
+		"picurl":    picurl,
+		"mp3url":    mp3url,
 	})
 }
 
@@ -56,10 +55,12 @@ func getbg() (url, author string) {
 		fmt.Println("Error：", err)
 		return
 	}
+	bgData.Bing.Url = htps(bgData.Bing.Url)
 
 	return bgData.Bing.Url, bgData.Bing.Copyright
 }
 
+//获取随机音乐
 func getMusic(url string) (name, auther, mp3url, picurl string) {
 	res, err := http.Get(url)
 	if err != nil {
@@ -83,4 +84,11 @@ func getMusic(url string) (name, auther, mp3url, picurl string) {
 	}
 
 	return musicData.Info.Name, musicData.Info.Auther, musicData.Info.Picurl, musicData.Info.Mp3url
+}
+
+//修改http到https
+func htps(data string) string {
+	index := 4
+	res := data[:index] + "s" + data[index:]
+	return res
 }
