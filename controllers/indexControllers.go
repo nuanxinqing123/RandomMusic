@@ -14,26 +14,19 @@ import (
 	"github.com/gin-gonic/gin"
 	"io/ioutil"
 	"net/http"
+	"strings"
 )
 
 // GetIndex 首页文件
 func GetIndex(ctx *gin.Context) {
-	url, copyright := getbg()
-	name, auther, picurl, mp3url := getMusic("https://api.qqsuu.cn/api/rand.music?sort=热歌榜&type=json")
-
-	ctx.HTML(http.StatusOK, "index.html", gin.H{
-		"url":       url,
-		"copyright": copyright,
-		"name":      name,
-		"auther":    auther,
-		"picurl":    picurl,
-		"mp3url":    mp3url,
-	})
+	ctx.HTML(http.StatusOK, "index.html", nil)
 }
 
 //获取背景信息
-func getbg() (url, author string) {
+func getbg(num int) (url, author string) {
 	//API请求Bing每日一图
+	//PC尺寸：http://s.cn.bing.net/th?id=OHR.DjurdjevicaBridge_ZH-CN0284105882_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp
+	//手机尺寸：https://cn.bing.com/th?id=OHR.DjurdjevicaBridge_ZH-CN0284105882_768x1366.jpg&rf=LaDigue_1920x1080.jpg&pid=hp
 	link := "https://api.no0a.cn/api/bing/0"
 	res, err := http.Get(link)
 	if err != nil {
@@ -55,9 +48,23 @@ func getbg() (url, author string) {
 		fmt.Println("Error：", err)
 		return
 	}
+	//转换https
 	bgData.Bing.Url = htps(bgData.Bing.Url)
 
+	//判断移动端 & 电脑端
+	if num == 1 {
+		bgData.Bing.Url = MobileSize(bgData.Bing.Url)
+	}
+
 	return bgData.Bing.Url, bgData.Bing.Copyright
+}
+
+// MobileSize 修改移动端尺寸
+func MobileSize(data string) string {
+	old := "1920x1080"
+	newUrl := "768x1366"
+	res := strings.Replace(data, old, newUrl, -1)
+	return res
 }
 
 //获取随机音乐
@@ -91,4 +98,9 @@ func htps(data string) string {
 	index := 4
 	res := data[:index] + "s" + data[index:]
 	return res
+}
+
+// NoRoute 404错误信息
+func NoRoute(ctx *gin.Context) {
+	ctx.String(http.StatusOK, "The current page does not exist, please return to the previous page")
 }

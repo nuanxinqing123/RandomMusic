@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://s1.music.126.net/style/favicon.ico?v20180823" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <title>{{.name}}&ensp;-&ensp;{{.auther}}</title>
+    <style>
+        body {
+            background: url({{.url}}) no-repeat;
+            /* background: url(https://cn.bing.com/th?id=OHR.DjurdjevicaBridge_ZH-CN0284105882_768x1366.jpg&rf=LaDigue_1920x1080.jpg&pid=hp) no-repeat; */
+        }
+        .box{
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%);
+            /*实现块元素百分比下居中*/
+            width:370px;
+            padding:30px;
+            background: rgba(250, 249, 249, .3);
+            box-sizing:border-box;
+            box-shadow: 0px 15px 25px rgba(0, 0, 0, .5);
+            border-radius:15px;
+        }
+        audio {
+            width: 300px;
+        }
+        .photo_img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="photo_img">
+            <img src="{{.picurl}}" alt="Photo" width="190px" height="190px">
+            <!-- <img src="https://p4.music.126.net/wUog39IHoJb76pL0AVCFNQ==/109951165348116023.jpg" alt="Photo" width="190px" height="190px"> -->
+        </div>
+        <hr>
+        <audio id="musicOn" controls autoplay="autoplay" style="display:block; margin:10px auto;">
+            <source src="{{.mp3url}}" type="audio/mpeg">
+        </audio><hr>
+        <div style="text-align: center; font-size: 120%;">
+            MusicData：{{.name}}-{{.auther}}
+            <!-- Music：他只是经过-h3R3 -->
+        </div>
+        <hr>
+        <div style="text-align: center;">
+            <div style="margin-bottom:10px;">
+                <a href="/a1" target="_self"><button class="ui twitter button" style="letter-spacing: 1px">随机热歌榜</button></a>
+                <a href="/a2" target="_self"><button class="ui twitter button" style="letter-spacing: 1px">随机新歌榜</button></a>
+            </div>
+            
+            <div>
+                <a href="/a3" target="_self"><button class="ui twitter button" style="letter-spacing: 1px">随机飙升榜</button></a>
+                <a href="/a4" target="_self"><button class="ui twitter button" style="letter-spacing: 1px">随机原创榜</button></a>
+            </div>
+        </div>
+        <hr>
+        <div style="text-align: center;">
+            {{.copyright}}
+            <!-- 杜德维卡塔拉大桥，黑山 (© Hike The World/Shutterstock) -->
+        </div>
+    </div>
+    <script>
+        // 设置默认音量
+        document.getElementById("musicOn").volume = 0.6;
+        // 设置播放结束后自动跳转
+        var aud = document.getElementById("musicOn");
+        aud.onended = function()
+        {
+            url = window.location.href; /* 获取完整URL */
+            window.open(url, "_self");
+        };
+    </script>
+</body>
+</html>
