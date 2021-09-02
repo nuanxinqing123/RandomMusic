@@ -40,7 +40,7 @@
             <img src="{{.picurl}}" alt="Photo" width="240px" height="240px">
         </div>
         <hr>
-        <audio id="musicOn" controls autoplay="autoplay" style="display:block; margin:10px auto;">
+        <audio id="musicOn" controls autoplay autoplay="autoplay" style="display:block; margin:10px auto;">
             <source src="{{.mp3url}}" type="audio/mpeg">
         </audio><hr>
         <div style="text-align: center; font-size: 120%;">
@@ -68,6 +68,16 @@
             url = window.location.href; /* 获取完整URL */
             window.open(url, "_self");
         };
+
+        //检测是否为失效歌曲
+        setTimeout(function(){
+            var audio = document.getElementById("musicOn");
+            console.log(audio.readyState);
+            if(audio.readyState == 0) {
+                url = window.location.href; /* 获取完整URL */
+                window.open(url, "_self");
+            };
+        }, 1000);
     </script>
 </body>
 </html>
