@@ -7,12 +7,13 @@
 
 package model
 
+// BgAPI 背景图片数据
 type BgAPI struct {
-	Status int	`json:"status"`
-	Bing BgData	`json:"bing"`
+	Status int    `json:"status"`
+	Bing   BgData `json:"bing"`
 }
 
 type BgData struct {
-	Url string `json:"url"`
-	Copyright	string	`json:"copyright"`
+	Url       string `json:"url"`
+	Copyright string `json:"copyright"`
 }

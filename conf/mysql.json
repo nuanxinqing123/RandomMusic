@@ -1,0 +1,8 @@
+{
+  "host": "*.*.*.*",
+  "port": "****",
+  "database": "music",
+  "username":"music",
+  "password": "****",
+  "logo_mode": true
+}

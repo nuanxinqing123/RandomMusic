@@ -102,5 +102,11 @@ func htps(data string) string {
 
 // NoRoute 404错误信息
 func NoRoute(ctx *gin.Context) {
-	ctx.String(http.StatusOK, "The current page does not exist, please return to the previous page")
+	//ctx.String(http.StatusOK, "The current page does not exist, please return to the previous page")
+	ctx.HTML(http.StatusOK, "404.html", nil)
+}
+
+// XLogin 登录选择
+func XLogin(ctx *gin.Context) {
+	ctx.HTML(http.StatusOK, "x_login.html", nil)
 }

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="https://s1.music.126.net/style/favicon.ico?v20180823" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css">
     <title>{{.name}}&ensp;-&ensp;{{.auther}}</title>
     <style>
         body {
@@ -55,8 +56,24 @@
         </div>
         <hr>
         <div style="text-align: center;">
-            {{.copyright}}
+            {{.copyright}} <br>
         </div>
+        <hr>
+        {{if .IsLogin}}
+            <div style="text-align: center; padding-top: 10px;">
+                当前登录用户：{{.UserName}}&ensp;&ensp;|&ensp;&ensp;
+                <button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-blue-50" style="width: 50px;" id="LoginBtn" onclick="clearCookie();">退出</button>
+            </div>
+        {{else}}
+            <div style="text-align: center; padding-top: 10px;">
+                <a href="/m/login">
+                    <button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-blue-50" style="width: 50px;" id="LoginBtn">登录</button>&ensp;&ensp;
+                </a>
+                <a href="/m/register">
+                    <button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-blue-50" style="width: 50px;" id="LoginBtn">注册</button>
+                </a>
+            </div>
+        {{end}}
     </div>
     <script>
         // 设置默认音量
@@ -78,6 +95,23 @@
                 window.open(url, "_self");
             };
         }, 1000);
+
+        function clearCookie() {
+            //退出登录
+            var request = new XMLHttpRequest();
+            request.open("GET", "/exit");
+            request.send( null );
+
+            var keys = document.cookie.match(/[^ =;]+(?=\=)/g);
+            if (keys) {
+                for (var i = keys.length; i--;) {
+                    document.cookie = keys[i] + '=0;path=/;expires=' + new Date(0).toUTCString();//清除当前域名下的Cookie
+                    url = window.location.href;
+                    window.open(url, "_self");
+                }
+            }
+            $("#divcookie").html(document.cookie);
+        }
     </script>
 </body>
 </html>
