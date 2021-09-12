@@ -1,8 +1,8 @@
 package tools
 
 import (
-	"Gin_163Music/dataSource"
-	"Gin_163Music/model"
+	"RandomMusic/dataSource"
+	"RandomMusic/model"
 	"crypto/md5"
 	"fmt"
 	"gopkg.in/gomail.v2"

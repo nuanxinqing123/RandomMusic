@@ -1,7 +1,7 @@
 package dataSource
 
 import (
-	"Gin_163Music/model"
+	"RandomMusic/model"
 	"encoding/json"
 	"fmt"
 	"github.com/jinzhu/gorm"

@@ -8,7 +8,7 @@
 package controllers
 
 import (
-	"Gin_163Music/model"
+	"RandomMusic/model"
 	"encoding/json"
 	"fmt"
 	"github.com/gin-gonic/gin"

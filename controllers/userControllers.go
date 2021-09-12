@@ -1,9 +1,9 @@
 package controllers
 
 import (
-	"Gin_163Music/dataSource"
-	"Gin_163Music/model"
-	"Gin_163Music/tools"
+	"RandomMusic/dataSource"
+	"RandomMusic/model"
+	"RandomMusic/tools"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"net/http"
