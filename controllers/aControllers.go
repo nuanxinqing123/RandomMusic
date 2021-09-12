@@ -67,3 +67,39 @@ func GetA4(ctx *gin.Context) {
 		"mp3url":    mp3url,
 	})
 }
+
+// GetAUserLogin 移动 - Login
+func GetAUserLogin(ctx *gin.Context) {
+	url, _ := getbg(1)
+
+	ctx.HTML(http.StatusOK, "alogin.html", gin.H{
+		"url": url,
+	})
+}
+
+// GetAUserRegister 移动 - Register
+func GetAUserRegister(ctx *gin.Context) {
+	url, _ := getbg(1)
+
+	ctx.HTML(http.StatusOK, "aregister.html", gin.H{
+		"url": url,
+	})
+}
+
+// GetAPaswd 移动 - 找回密码
+func GetAPaswd(ctx *gin.Context) {
+	url, _ := getbg(1)
+
+	ctx.HTML(http.StatusOK, "apaswd.html", gin.H{
+		"url": url,
+	})
+}
+
+// GetAPassWord 移动 - 修改密码
+func GetAPassWord(ctx *gin.Context) {
+	url, _ := getbg(1)
+
+	ctx.HTML(http.StatusOK, "apassword.html", gin.H{
+		"url": url,
+	})
+}

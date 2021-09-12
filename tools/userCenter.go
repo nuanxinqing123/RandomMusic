@@ -72,6 +72,7 @@ func SendMail(mailTo []string, subject string, body string, em string) error {
 	m.SetHeader("To", mailTo...)    //发送给多个用户
 	m.SetHeader("Subject", subject) //设置邮件主题
 	//设置随机数
+	rand.Seed(time.Now().Unix())
 	num := rand.Intn(999999)
 	m.SetBody("text/html", body+strconv.Itoa(num)) //设置邮件正文
 

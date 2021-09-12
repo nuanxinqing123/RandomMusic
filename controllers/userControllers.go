@@ -42,7 +42,7 @@ func PostUserRegister(ctx *gin.Context) {
 					//提交注册
 					dataSource.DB.Create(&userRegister)
 
-					ctx.Redirect(http.StatusMovedPermanently, "/xlogin")
+					ctx.Redirect(http.StatusMovedPermanently, "/")
 				}
 			}
 		}
@@ -98,6 +98,7 @@ func ExitGet(ctx *gin.Context) {
 func PostEmailCode(ctx *gin.Context) {
 	var user model.User
 	email := ctx.PostForm("email")
+	id := ctx.PostForm("equipment")
 	user.Email = email
 
 	//判断邮箱是否已注册
@@ -114,7 +115,11 @@ func PostEmailCode(ctx *gin.Context) {
 		} else {
 			//发送邮件
 			go tools.SendEmailCode(EmailCode.Email)
-			ctx.Redirect(http.StatusMovedPermanently, "/m/password")
+			if id == "0" {
+				ctx.Redirect(http.StatusMovedPermanently, "/m/password")
+			} else {
+				ctx.Redirect(http.StatusMovedPermanently, "/a/password")
+			}
 		}
 	}
 }

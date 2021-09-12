@@ -149,7 +149,7 @@ func GetMUserLogin(ctx *gin.Context) {
 	})
 }
 
-// GetMUserRegister PC - Login
+// GetMUserRegister PC - Register
 func GetMUserRegister(ctx *gin.Context) {
 	url, _ := getbg(0)
 
@@ -158,8 +158,8 @@ func GetMUserRegister(ctx *gin.Context) {
 	})
 }
 
-// GetPaswd PC - 找回密码
-func GetPaswd(ctx *gin.Context) {
+// GetMPaswd PC - 找回密码
+func GetMPaswd(ctx *gin.Context) {
 	url, _ := getbg(0)
 
 	ctx.HTML(http.StatusOK, "mpaswd.html", gin.H{
@@ -167,7 +167,8 @@ func GetPaswd(ctx *gin.Context) {
 	})
 }
 
-func GetPassWord(ctx *gin.Context) {
+// GetMPassWord PC - 修改密码
+func GetMPassWord(ctx *gin.Context) {
 	url, _ := getbg(0)
 
 	ctx.HTML(http.StatusOK, "mpassword.html", gin.H{

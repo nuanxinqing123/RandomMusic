@@ -17,7 +17,7 @@ import (
 )
 
 func main() {
-	//gin.SetMode(gin.ReleaseMode)
+	gin.SetMode(gin.ReleaseMode)
 	route := gin.Default()
 	//加载网页文件
 	route.LoadHTMLGlob("./views/**/*")
@@ -46,9 +46,9 @@ func main() {
 		//注册页面
 		route.GET("/m/register", controllers.GetMUserRegister)
 		//Send验证码页面
-		route.GET("/m/getpaswd", controllers.GetPaswd)
+		route.GET("/m/getpaswd", controllers.GetMPaswd)
 		//改密页面
-		route.GET("/m/password", controllers.GetPassWord)
+		route.GET("/m/password", controllers.GetMPassWord)
 	}
 
 	// 移动端
@@ -61,12 +61,18 @@ func main() {
 		route.GET("/a3", controllers.GetA3)
 		//原创
 		route.GET("/a4", controllers.GetA4)
+		//登录页面
+		route.GET("/a/login", controllers.GetAUserLogin)
+		//注册页面
+		route.GET("/a/register", controllers.GetAUserRegister)
+		//Send验证码页面
+		route.GET("/a/getpaswd", controllers.GetAPaswd)
+		//改密页面
+		route.GET("/a/password", controllers.GetAPassWord)
 	}
 
 	//公共接口
 	{
-		//电脑首页
-		route.GET("/xlogin", controllers.XLogin)
 		//登录接口
 		route.POST("/login", controllers.PostUserLogin)
 		//注册接口
