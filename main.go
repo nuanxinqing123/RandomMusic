@@ -8,8 +8,8 @@
 package main
 
 import (
-	"Gin_163Music/controllers"
-	_ "Gin_163Music/dataSource"
+	"RandomMusic/controllers"
+	_ "RandomMusic/dataSource"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
