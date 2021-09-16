@@ -13,59 +13,127 @@ import (
 )
 
 func GetA1(ctx *gin.Context) {
+	//获取session，判断用户是否登录
+	isLogin := GetSession(ctx)
 	url, copyright := getbg(1)
 	name, auther, picurl, mp3url := getMusic("https://api.qqsuu.cn/api/rand.music?sort=热歌榜&type=json")
 
-	ctx.HTML(http.StatusOK, "app.html", gin.H{
-		"url":       url,
-		"copyright": copyright,
-		"name":      name,
-		"auther":    auther,
-		"picurl":    picurl,
-		"mp3url":    mp3url,
-	})
+	if isLogin == true {
+		userName := GetUserName(ctx)
+
+		ctx.HTML(http.StatusOK, "app.html", gin.H{
+			"url":       url,
+			"copyright": copyright,
+			"name":      name,
+			"auther":    auther,
+			"picurl":    picurl,
+			"mp3url":    mp3url,
+			"IsLogin":   isLogin,
+			"UserName":  userName,
+		})
+	} else {
+		ctx.HTML(http.StatusOK, "app.html", gin.H{
+			"url":       url,
+			"copyright": copyright,
+			"name":      name,
+			"auther":    auther,
+			"picurl":    picurl,
+			"mp3url":    mp3url,
+		})
+	}
 }
 
 func GetA2(ctx *gin.Context) {
+	//获取session，判断用户是否登录
+	isLogin := GetSession(ctx)
 	url, copyright := getbg(1)
 	name, auther, picurl, mp3url := getMusic("https://api.qqsuu.cn/api/rand.music?sort=新歌榜&type=json")
 
-	ctx.HTML(http.StatusOK, "app.html", gin.H{
-		"url":       url,
-		"copyright": copyright,
-		"name":      name,
-		"auther":    auther,
-		"picurl":    picurl,
-		"mp3url":    mp3url,
-	})
+	if isLogin == true {
+		userName := GetUserName(ctx)
+
+		ctx.HTML(http.StatusOK, "app.html", gin.H{
+			"url":       url,
+			"copyright": copyright,
+			"name":      name,
+			"auther":    auther,
+			"picurl":    picurl,
+			"mp3url":    mp3url,
+			"IsLogin":   isLogin,
+			"UserName":  userName,
+		})
+	} else {
+		ctx.HTML(http.StatusOK, "app.html", gin.H{
+			"url":       url,
+			"copyright": copyright,
+			"name":      name,
+			"auther":    auther,
+			"picurl":    picurl,
+			"mp3url":    mp3url,
+		})
+	}
 }
 
 func GetA3(ctx *gin.Context) {
+	//获取session，判断用户是否登录
+	isLogin := GetSession(ctx)
 	url, copyright := getbg(1)
 	name, auther, picurl, mp3url := getMusic("https://api.qqsuu.cn/api/rand.music?sort=飙升榜&type=json")
 
-	ctx.HTML(http.StatusOK, "app.html", gin.H{
-		"url":       url,
-		"copyright": copyright,
-		"name":      name,
-		"auther":    auther,
-		"picurl":    picurl,
-		"mp3url":    mp3url,
-	})
+	if isLogin == true {
+		userName := GetUserName(ctx)
+
+		ctx.HTML(http.StatusOK, "app.html", gin.H{
+			"url":       url,
+			"copyright": copyright,
+			"name":      name,
+			"auther":    auther,
+			"picurl":    picurl,
+			"mp3url":    mp3url,
+			"IsLogin":   isLogin,
+			"UserName":  userName,
+		})
+	} else {
+		ctx.HTML(http.StatusOK, "app.html", gin.H{
+			"url":       url,
+			"copyright": copyright,
+			"name":      name,
+			"auther":    auther,
+			"picurl":    picurl,
+			"mp3url":    mp3url,
+		})
+	}
 }
 
 func GetA4(ctx *gin.Context) {
+	//获取session，判断用户是否登录
+	isLogin := GetSession(ctx)
 	url, copyright := getbg(1)
 	name, auther, picurl, mp3url := getMusic("https://api.qqsuu.cn/api/rand.music?sort=原创榜&type=json")
 
-	ctx.HTML(http.StatusOK, "app.html", gin.H{
-		"url":       url,
-		"copyright": copyright,
-		"name":      name,
-		"auther":    auther,
-		"picurl":    picurl,
-		"mp3url":    mp3url,
-	})
+	if isLogin == true {
+		userName := GetUserName(ctx)
+
+		ctx.HTML(http.StatusOK, "app.html", gin.H{
+			"url":       url,
+			"copyright": copyright,
+			"name":      name,
+			"auther":    auther,
+			"picurl":    picurl,
+			"mp3url":    mp3url,
+			"IsLogin":   isLogin,
+			"UserName":  userName,
+		})
+	} else {
+		ctx.HTML(http.StatusOK, "app.html", gin.H{
+			"url":       url,
+			"copyright": copyright,
+			"name":      name,
+			"auther":    auther,
+			"picurl":    picurl,
+			"mp3url":    mp3url,
+		})
+	}
 }
 
 // GetAUserLogin 移动 - Login
