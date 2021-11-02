@@ -1,6 +1,8 @@
 ## 随机音乐播放
 API整合菜鸟整理出来的项目
 
+演示地址：[https://music.6b7.org](https://music.6b7.org "演示网站")
+
 ### 开发
 - Golang + Gin框架
 - HTML5 + CSS3 + JavaScript
